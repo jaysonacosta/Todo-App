@@ -11,17 +11,55 @@
             </div>
           </div>
           <div class="items-container">
-            <div class="row">
-              <div class="col p-3">
-                <app-group></app-group>
+            <ng-container *ngIf="groups.length; else noGroups">
+              <ng-container *ngFor="let group of groups">
+                <div class="row">
+                  <div class="col p-3">
+                    <!-- Group Component -->
+                    <app-group
+                      [group]="group"
+                      (click)="getGroupTasks(group._id)"
+                    ></app-group>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-template #noGroups>
+              <div class="row">
+                <div class="col">
+                  <div class="alert alert-danger" role="alert">
+                    No groups found! Create one.
+                  </div>
+                </div>
               </div>
-            </div>
+            </ng-template>
           </div>
           <div class="button-container d-flex align-items-center">
-            <button class="btn btn-primary btn-lg grp-btn">Create New Group</button>
+            <button class="btn btn-primary btn-lg grp-btn">
+              Create New Group
+            </button>
           </div>
         </div>
-        <div class="col-12 col-md-7 col-lg-8 col-xl-9"></div>
+        <div class="col-12 col-md-7 col-lg-8 col-xl-9 p-3">
+          <ng-container *ngIf="tasks.length; else noTasks">
+            <ng-container *ngFor="let task of tasks">
+              <div class="row">
+                <div class="col">
+                  <app-task [task]="task"></app-task>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <ng-template #noTasks>
+            <div class="row">
+              <div class="col">
+                <div class="alert alert-danger" role="alert">
+                  No tasks found! Do you not have anything to do?
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </div>
       </div>
     </div>
   </div>
