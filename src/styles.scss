@@ -1,4 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+:root {
+  --indigo: #27187e;
+  --light-blue: #758bfd;
+  --blue-purple: #aeb8fe;
+  --cloudy: #f1f2f6;
+  --dark-orange: #ff8600;
+  --graphite: #333;
+}
+
+body {
+  background-color: var(--light-blue);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
